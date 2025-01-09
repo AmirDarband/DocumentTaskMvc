@@ -1,0 +1,22 @@
+CREATE TABLE Entities (
+    EntityId INT PRIMARY KEY IDENTITY(1,1),
+    Name NVARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Users (
+    UserId INT PRIMARY KEY IDENTITY(1,1),
+    Username NVARCHAR(100) NOT NULL
+
+);
+
+CREATE TABLE Documents (
+    DocumentsId INT PRIMARY KEY IDENTITY(1,1),
+    Title NVARCHAR(100) NOT NULL,
+    FilePath NVARCHAR(255) NOT NULL,
+    CreatedDate DATETIME NOT NULL,
+    EntityId INT NOT NULL,
+    UserId INT NOT NULL,
+    FOREIGN KEY (EntityId) REFERENCES Entities(EntityId),
+	 FOREIGN KEY (UserId) REFERENCES Users(UserId)
+);
+
